@@ -8,5 +8,6 @@ const changeBackground = () => {
   body.style.backgroundColor = colors[colorIndex];
 }
 
+
 body.style.backgroundColor = 'violet';
 button.addEventListener('click', changeBackground);
