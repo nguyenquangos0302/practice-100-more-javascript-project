@@ -10,3 +10,4 @@ const changeBackground = () => {
 
 body.style.backgroundColor = 'violet';
 button.addEventListener('click', changeBackground);
+
