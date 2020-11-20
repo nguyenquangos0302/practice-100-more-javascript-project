@@ -33,8 +33,6 @@
 
       imageDIV.style.backgroundImage = `url('./img/${pictures[count]}.jpeg')`;
 
-      
-
     })
   })
 
