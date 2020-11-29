@@ -4,56 +4,51 @@
     const customerText = document.querySelector('#customer-text')
     const buttons = document.querySelectorAll('.btn')
     let index = 0
-    const customers = []
+    const customers = [];
 
-    //Create a new customer using a customer constructor
-    
-    //Customer Constructor
-    function Customer(img, name, text) {
-        this.img = img
-        this.name = name
-        this.text = text
+    // create constructor
+    function Customer(name, img, description) {
+        this.name = name;
+        this.img = img;
+        this.description = description;
     }
 
-    //Create new customer using the constructor function
-
-    function createCustomer(img, name, text) {
-
-        let fullImg = `./img/customer-${img}.jpg`
-        let customer = new Customer(fullImg, name, text)
-
-        customers.push(customer)
+    function createCustomer(name, img, descript) {
+        let imgFull = `img/customer-${img}.jpg`;
+        let customer = new Customer(name, imgFull, descript);
+        customers.push(customer);
     }
 
-    
-    createCustomer(0, 'John', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis neque reprehenderit laborum, corporis explicabo assumenda. Porro impedit consectetur animi, reprehenderit recusandae sapiente at aliquam reiciendis modi ipsam rerum suscipit distinctio?')
-    createCustomer(1, 'Sandy', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock')
-    createCustomer(2, 'Amy', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable.')
-    createCustomer(3, 'Tyrell', 'If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text.')
-    createCustomer(4, 'Wanda', 'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.')
-    
+    createCustomer('quang', 0, "no-thing");
+    createCustomer('quang1', 1, "no-thing1");
+    createCustomer('quang2', 2, "no-thing2");
+    createCustomer('quang3', 3, "no-thing3");
+    createCustomer('quang4', 4, "no-thing4");
 
-    buttons.forEach(function(button){
-        button.addEventListener('click', function(e){
-            if (e.target.parentElement.classList.contains('prevBtn')){
-               if(index === 0){
-                    index = customers.length
-               }
-               index--
-               customerImage.src = customers[index].img
-               customerName.textContent = customers[index].name
-               customerText.textContent = customers[index].text
+    function initCustomer(customer) {
+        customerName.textContent = customer.name;
+        customerImage.src = customer.img;
+        customerText.textContent = customer.description;
+    }
+
+    initCustomer(customers[0]);
+
+    let buttonArray = Array.from(buttons);
+    buttonArray.forEach((button, idx) => {
+        button.addEventListener('click', function(event) {
+            if (event.target.classList.contains('prevBtn')) {
+                index--;
+            } else if (event.target.classList.contains('nextBtn')) {
+                index++;
             }
-            if (e.target.parentElement.classList.contains('nextBtn')){
-                index++
-                if(index === customers.length){
-                     index = 0
-                }
-                customerImage.src = customers[index].img
-                customerName.textContent = customers[index].name
-                customerText.textContent = customers[index].text
-             }
+            if (index < 0) {
+                index = customers.length - 1;
+            } else if (index >= customers.length) {
+                index = 0;
+            }
+            initCustomer(customers[index]);
         })
     })
-    
+
+
 })()

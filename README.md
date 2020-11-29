@@ -14,8 +14,8 @@ journey
     title 5 Projects Javascript
     section Begin
       6.Background Image Slide: 5: Done
-      7.Testimonials: 2: Processing
-      8.Filters: 1: Not Yet
+      7.Testimonials: 5: Done
+      8.Filters: 2: Process
       9.Popup Modal: 1: Not Yet
       10.Calculator: 1: Not Yet
 ```
